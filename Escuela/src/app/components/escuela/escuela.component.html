@@ -1,0 +1,152 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                        <h3 class="titulo">
+                            Escuela
+                        </h3>
+                   </div>
+            </div>
+        </div>
+      </div> 
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="titulo">{{accion |uppercase}}</h5>
+                <form [formGroup]="formAlumno" (ngSubmit)="accion === 'agregar' ? addAlumno() : updateAlumno()">      
+                    <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-id-card" 
+                                [class.green-icon]="this.formAlumno.get('codigoAlumno')?.valid"
+                                [class.red-icon]="this.formAlumno.get('codigoAlumno')?.invalid && this.formAlumno.get('codigoAlumno')?.touched"></i>
+                        </span>
+                        <input formControlName="codigoAlumno" minlength="3" maxlength="50" type="text" class="form-control" placeholder="Numero de Documento"
+                        [class.is-invalid]="this.formAlumno.get('codigoAlumno')?.invalid && this.formAlumno.get('codigoAlumno')?.touched">
+                        <div class="invalid-feedback" *ngIf="this.formAlumno.get('codigoAlumno')?.invalid && this.formAlumno.get('codigoAlumno')?.touched">
+                            Por favor, ingresa un valor válido.
+                        </div>
+                      </div>
+
+                      <div class="input-group input-group-lg mb-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user"
+                            [class.green-icon]="this.formAlumno.get('nombreAlumno')?.valid"
+                            [class.red-icon]="this.formAlumno.get('nombreAlumno')?.invalid && this.formAlumno.get('nombreAlumno')?.touched"></i>
+                        </span>
+                        <input formControlName="nombreAlumno" minlength="5" maxlength="50" type="text" class="form-control" placeholder="Nombres y Apellidos"
+                        [class.is-invalid]="this.formAlumno.get('nombreAlumno')?.invalid && this.formAlumno.get('nombreAlumno')?.touched">
+                        <div class="invalid-feedback" *ngIf="this.formAlumno.get('nombreAlumno')?.invalid && this.formAlumno.get('nombreAlumno')?.touched">
+                            Por favor, ingresa un valor válido.
+                        </div>
+                      </div>
+
+
+                      <div class="col-lg-5">
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-calendar-days"
+                                    [class.green-icon]="this.formAlumno.get('edadAlumno')?.valid"
+                                    [class.red-icon]="this.formAlumno.get('edadAlumno')?.invalid && this.formAlumno.get('edadAlumno')?.touched"></i>
+                            </span>
+                            <input formControlName="edadAlumno" maxlength="5" type="text" class="form-control" placeholder="Edad"
+                            [class.is-invalid]="this.formAlumno.get('edadAlumno')?.invalid && this.formAlumno.get('edadAlumno')?.touched">
+                            <div class="invalid-feedback" *ngIf="this.formAlumno.get('edadAlumno')?.invalid && this.formAlumno.get('edadAlumno')?.touched">
+                                Por favor, ingresa un valor válido.
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col-lg-5">
+                            <div class="input-group input-group-lg mb-3">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-calendar-days"
+                                        [class.green-icon]="this.formAlumno.get('semestreAlumno')?.valid"
+                                        [class.red-icon]="this.formAlumno.get('semestreAlumno')?.invalid && this.formAlumno.get('semestreAlumno')?.touched"></i>
+                                </span>
+                                <input formControlName="semestreAlumno" maxlength="3" type="text" class="form-control" placeholder="semestreAlumno"
+                                [class.is-invalid]="this.formAlumno.get('semestreAlumno')?.invalid && this.formAlumno.get('semestreAlumno')?.touched">
+                            <div class="invalid-feedback" *ngIf="this.formAlumno.get('semestreAlumno')?.invalid && this.formAlumno.get('semestreAlumno')?.touched">
+                                Por favor, ingresa un valor válido.
+                            </div>
+                              </div>
+                          </div>
+                    
+                          <div class="col-lg-7">
+                            <div class="input-group input-group-lg mb-3">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-venus-mars"
+                                        [class.green-icon]="this.formAlumno.get('generoAlumno')?.valid"
+                                        [class.red-icon]="this.formAlumno.get('generoAlumno')?.invalid && this.formAlumno.get('generoAlumno')?.touched"></i>
+                                </span>
+                                <select formControlName="generoAlumno" id="generoAlumno" class="form-select"
+                                    [class.is-invalid]="this.formAlumno.get('generoAlumno')?.invalid && this.formAlumno.get('generoAlumno')?.touched">
+                                    <option value="" disabled selected>Seleccione el género</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="NoDefinido">NoDefinido</option>
+                                </select>
+                                <div class="invalid-feedback" *ngIf="this.formAlumno.get('generoAlumno')?.invalid && this.formAlumno.get('generoAlumno')?.touched">
+                                    Por favor, elija una opción.
+                                </div>
+                            </div>
+                        </div>
+                        
+
+
+                          <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-id-card" 
+                                    [class.green-icon]="this.formAlumno.get('codigoCarrera1')?.valid"
+                                    [class.red-icon]="this.formAlumno.get('codigoCarrera')?.invalid && this.formAlumno.get('codigoCarrera1')?.touched"></i>
+                            </span>
+                            <input formControlName="codigoCarrera1" minlength="3" maxlength="50" type="text" class="form-control" placeholder="Codigo de la Carrera"
+                            [class.is-invalid]="this.formAlumno.get('codigoCarrera1')?.invalid && this.formAlumno.get('codigoCarrera1')?.touched">
+                            <div class="invalid-feedback" *ngIf="this.formAlumno.get('codigoCarrera1')?.invalid && this.formAlumno.get('codigoCarrera1')?.touched">
+                                Por favor, ingresa un valor válido.
+                            </div>
+                          </div>
+
+                      </div>
+                      <button [disabled]="this.formAlumno.invalid"  type="submit" class="btn btn-success btn-lg">
+                        <i class="fa-solid fa-database"></i>&nbsp; {{accion |uppercase}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="titulo">Lista Alumnos</h5>
+              <table class="table">
+                  <tbody>
+                      <tr *ngFor="let Alumno of listaAlumno; let i = index ">
+                          <td>{{Alumno.codigoAlumno}}</td>
+                          <td>{{Alumno.nombreAlumno}}</td>
+                          <td>{{Alumno.edadAlumno}}</td>
+                          <td>{{Alumno.semestreAlumno}}</td>
+                          <td>{{Alumno.generoAlumno}}</td>
+                          <td>{{Alumno.codigoCarrera1}}</td>                              
+                          <td><img src="assets/images/van gonh-Api.gif" class="imagen-usuario"></td>
+  
+                          <td><i (click)="prepareUpdate(Alumno)" class="far fa-solid fa-pencil text-info"></i></td>
+                        <td><i (click)="deleteAlumno(Alumno.codigoAlumno);" class="far fa-solid fa-trash-can text-danger"></i></td>
+                       </tr>
+                   </tbody>
+               </table>
+           </div>
+       </div>
+     </div>
+    </div>
+
+<div>
+valido: {{formAlumno.valid}}
+</div>
+
+  
+  
+
